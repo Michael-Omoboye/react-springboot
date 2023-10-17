@@ -1,9 +1,15 @@
 import { useState } from "react";
-import TodoRowItem from './components/TodoRowItem';
+import TodoRowItem from "./components/TodoRowItem";
 import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
+
+  const todos = [
+    { rowNumber: 1, rowDescription: "Feed puppy", rowAssigned: "User one" },
+    { rowNumber: 2, rowDescription: "Water plants", rowAssigned: "User two" },
+    { rowNumber: 3, rowDescription: "make dinner", rowAssigned: "User one" },
+  ];
 
   return (
     <div className="mt-5 container">
@@ -19,7 +25,11 @@ function App() {
               </tr>
             </thead>
             <tbody>
-              <TodoRowItem />
+              <TodoRowItem
+                rowNumber={todos[0].rowNumber}
+                rowDescription={todos[0].rowDescription}
+                rowAssigned={todos[0].rowAssigned}
+              />
               <tr>
                 <th scope="row">2</th>
                 <td>Get haircut</td>

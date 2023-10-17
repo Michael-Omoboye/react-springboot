@@ -1,6 +1,6 @@
 import React from 'react'
 
-const TodoRowItem = () => {
+const TodoRowItem = (props) => {
 
   const rowNumber = 1;
   const rowDescription = "Feed dog";
