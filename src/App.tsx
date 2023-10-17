@@ -1,16 +1,15 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import TodoRowItem from './components/TodoRowItem';
 import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <>
-      <div>
-        <div>Your Todo's</div>
-        <div>
+    <div className="mt-5 container">
+      <div className="card">
+        <div className="card-header">Your Todo's</div>
+        <div className="card-body">
           <table className="table table-hover">
             <thead>
               <tr>
@@ -20,13 +19,9 @@ function App() {
               </tr>
             </thead>
             <tbody>
+              <TodoRowItem />
               <tr>
-                <th scope="row">1</th>
-                <td>Feed dog</td>
-                <td>Eric</td>
-              </tr>
-              <tr>
-                <th scope="col">2</th>
+                <th scope="row">2</th>
                 <td>Get haircut</td>
                 <td>Eric</td>
               </tr>
@@ -34,7 +29,7 @@ function App() {
           </table>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
