@@ -15,15 +15,14 @@ function App() {
     }
   ]);
 
-  const addtodo = () => {
+  const addtodo = (description, assigned) => {
     if (todos.length > 0) {
       const newTodo = {
         rowNumber: todos.length + 1,
-        rowDescription: "New Todo",
-        rowAssigned: "User Three",
+        rowDescription: description,
+        rowAssigned: assigned,
       };
       setTodos(todos => [...todos, newTodo]);
-      console.log(todos);
     }
   };
 
@@ -36,7 +35,7 @@ function App() {
           <button className="btn btn-primary" onClick={addtodo}>
             Add new todo
           </button>
-          <NewTodoForm />
+          <NewTodoForm addTodo={addtodo} />
         </div>
       </div>
     </div>

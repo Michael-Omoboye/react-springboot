@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 
-export const NewTodoForm = () => {
+export const NewTodoForm = (props) => {
   const [description, setDescription] = useState("");
   const [assigned, setAssigned] = useState("");
 
-  const descriptionChange = (ev) => {
-    console.log("description", ev.target.value);
-    setDescription(ev.target.value);
+  const submitTodo = () => {
+    if (description !== "" && assigned !== "") {
+      props.addTodo(description, assigned);
+      setAssigned("");
+      setDescription("");
+    }
   };
 
-  const assignedChange = (ev) => {
-    console.log("assigned", ev.target.value);
-    setAssigned(ev.target.value);
-  };
   return (
     <div className="mt-5">
       <form action="">
@@ -24,7 +23,7 @@ export const NewTodoForm = () => {
             type="text"
             className="form-control"
             required
-            onChange={assignedChange}
+            onChange={(e) => setAssigned(e.target.value)}
             value={assigned}
           />
         </div>
@@ -36,11 +35,15 @@ export const NewTodoForm = () => {
             className="form-control"
             rows={3}
             required
-            onChange={descriptionChange}
+            onChange={(e) => setDescription(e.target.value)}
             value={description}
           ></textarea>
         </div>
-        <button type="button" className="btn btn-primary mt-3">
+        <button
+          type="button"
+          className="btn btn-primary mt-3"
+          onClick={submitTodo}
+        >
           Add todo
         </button>
       </form>
