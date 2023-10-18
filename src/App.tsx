@@ -12,22 +12,29 @@ function App() {
       rowNumber: 4,
       rowDescription: "Charge phone battery",
       rowAssigned: "User one",
-    }
+    },
   ]);
 
   const addtodo = (description, assigned) => {
-    let  rowNumber = 0;
+    let rowNumber = 0;
     if (todos.length > 0) {
       rowNumber = todos[todos.length - 1].rowNumber + 1;
-    }else{
+    } else {
       rowNumber = 1;
     }
-      const newTodo = {
-        rowNumber: rowNumber,
-        rowDescription: description,
-        rowAssigned: assigned,
-      };
-      setTodos(todos => [...todos, newTodo]);
+    const newTodo = {
+      rowNumber: rowNumber,
+      rowDescription: description,
+      rowAssigned: assigned,
+    };
+    setTodos((todos) => [...todos, newTodo]);
+  };
+
+  const deleteTodo = (deleteTodoRowNumber) => {
+    let filtered = todos.filter(function (value) {
+      return value.rowNumber !== deleteTodoRowNumber;
+    });
+    setTodos(filtered);
   };
 
   return (
@@ -35,10 +42,8 @@ function App() {
       <div className="card">
         <div className="card-header">Your Todo's</div>
         <div className="card-body">
-          <TodoTable todos={todos} />
-          <button className="btn btn-primary" onClick={addtodo}>
-            Add new todo
-          </button>
+          <TodoTable todos={todos} deleteTodo={deleteTodo} />
+          <button className="btn btn-primary">Add new todo</button>
           <NewTodoForm addTodo={addtodo} />
         </div>
       </div>
