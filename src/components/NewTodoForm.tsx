@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const NewTodoForm = (props:{addTodo: Function}) => {
+export const NewTodoForm: React.FC<{addTodo: Function}>= (props) => {
   const [description, setDescription] = useState("");
   const [assigned, setAssigned] = useState("");
 
@@ -28,7 +28,7 @@ export const NewTodoForm = (props:{addTodo: Function}) => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="" className="form-control">
+          <label htmlFor="" className="form-label">
             Description
           </label>
           <textarea

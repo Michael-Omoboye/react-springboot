@@ -3,7 +3,7 @@ import "./App.css";
 import { TodoTable } from "./components/TodoTable";
 import { NewTodoForm } from "./components/NewTodoForm";
 
-function App() {
+export const App = () => {
   const [showAddTodoForm, setShowAddTodoForm] = useState(false);
   const [todos, setTodos] = useState([
     { rowNumber: 1, rowDescription: "Feed puppy", rowAssigned: "User one" },
@@ -57,4 +57,3 @@ function App() {
   );
 }
 
-export default App;
